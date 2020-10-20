@@ -1,0 +1,268 @@
+:root {
+    --cor-azul: #116fff;
+    --cor-branca: #fff;
+    --cor-cinza-claro: #ededed;
+    --cor-cinza-escuro: #696969;
+    --cor-grafite: #39454b;
+    --cor-escura: #020d13;
+    --cor-verde: #45a049;
+    --cor-vermelho-claro: #fcd7d7;
+    --cor-vermelho: red;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--cor-cinza-claro);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--cor-azul);
+}
+
+h1 {
+    text-align: center;
+}
+
+/**
+ * Estilos Cabeçalho
+ */
+.cabecalho {
+    background-color: var(--cor-escura);
+    color: var(--cor-branca);
+}
+
+.navegacao {
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 5px;
+}
+
+.logo {
+    width: 170px;
+}
+
+.item-menu {
+    color: var(--cor-branca);
+    display: inline-block;
+    font-weight: 500;
+    margin: 0 5px;
+}
+
+.item-menu:hover {
+    border-bottom: 3px solid yellow;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-button {
+    background: transparent;
+    border: 0;
+    color: var(--cor-branca);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    height: 20px;
+    margin: 0 5px;
+    padding: 0;
+}
+
+.dropdown-icon {
+    border: solid var(--cor-branca);
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    margin-bottom: 2px;
+    padding: 3px;
+    transform: rotate(45deg);
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu {
+    background: var(--cor-escura);
+    display: none;
+    position: absolute;
+    width: 300px;
+    z-index: 1;
+}
+
+.dropdown-menu.ativo {
+    display: block;
+}
+
+.dropdown-menu .item-menu {
+    display: block;
+    margin: 0;
+    padding: 12px 16px;
+}
+
+.dropdown-menu .item-menu:hover {
+    background-color: var(--cor-azul);
+    border-bottom: 0;
+}
+
+.menu-icone {
+    background-image: url("imagens/bars-icone.png");
+    background-size: contain;
+    /*display: inline-block;*/
+    display: none;
+    height: 32px;
+    width: 32px;
+}
+
+.acesso.botao {
+    margin-right: 5px;
+    margin-left: auto;
+}
+
+@media screen and (max-width: 650px) {
+
+    .navegacao {
+        display: block;
+        position: relative;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: none;
+    }
+
+    .navegacao.ativo {
+        padding-bottom: 8px;
+    }
+
+    .navegacao a:not(:first-child):not(.menu-icone), .navegacao .dropdown {
+        display: none;
+    }
+
+    .navegacao.ativo a:not(:first-child):not(.menu-icone) {
+        display: block;
+        padding: 8px 8px;
+    }
+
+    .navegacao.ativo .dropdown {
+        display: block;
+        padding: 5px 8px;
+    }
+
+    .navegacao.ativo .dropdown-menu.ativo {
+        position: relative;
+        display: block;
+        width: 100%;
+    }
+
+    .navegacao.ativo .dropdown-menu .item-menu {
+        background-color: var(--cor-grafite);
+        display: block;
+        padding: 5px 8px;
+    }
+
+    .navegacao.ativo .dropdown-menu .item-menu:not(:last-child){
+        border-bottom: 1px solid var(--cor-cinza-claro);
+    }
+
+    .navegacao.ativo .dropdown-btn {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+
+    .navegacao.ativo .acesso.botao {
+        display: block;
+        width: 6em;
+        text-align: center;
+        margin: 5px auto;
+    }
+
+    .menu-icone {
+        display: block;
+        position: absolute;
+        right: 8px;
+        top: 10px;
+    }
+
+}
+
+main {
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 15px;
+}
+
+/** 
+ * Estilos Rodapé
+ */
+.rodape {
+    background-color: var(--cor-cinza-escuro);
+    color: var(--cor-branca);
+    text-align: center;
+    padding: 10px 0;
+}
+
+.rodape p {
+    margin: 0;
+}
+
+.media-list {
+    list-style: none;
+}
+
+.media-list li {
+    display: inline-block;
+}
+
+.media-link {
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: var(--cor-branca);
+    display: block;
+    height: 16px;
+    text-indent: -9999px;
+    width: 16px
+}
+
+.media-link.facebook { background-image: url("imagens/facebook-3-64.png"); }
+.media-link.linkedin { background-image: url("imagens/linkedin-3-64.png"); }
+.media-link.instagram { background-image: url("imagens/instagram-64.png"); }
+.media-link.twitter { background-image: url("imagens/twitter-3-64.png"); }
+.media-link.youtube { background-image: url("imagens/youtube-64.png"); }
+
+ /**
+  * Estilos de Botões 
+  */
+.botao {
+    background-color: var(--cor-azul);
+    border: 1px solid var(--cor-azul);
+    border-radius: 16px;
+    color: var(--cor-branca);
+    cursor: pointer;
+    font-weight: 800;
+    padding: 8px 12px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.botao.enviar {
+    background-color: var(--cor-verde);
+    border: 1px solid var(--cor-verde);
+}
+
+.botao.limpar {
+    background-color: var(--cor-vermelho);
+    border: 1px solid var(--cor-vermelho);
+}
