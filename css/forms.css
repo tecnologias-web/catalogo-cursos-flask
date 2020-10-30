@@ -1,0 +1,39 @@
+input, select, textarea {
+    border-radius: 4px;
+    border: 1px solid var(--cor-cinza-claro);
+    display: inline-block;
+    margin: 8px 0;
+    padding: 12px 20px;
+    width: 100%;
+}
+
+form.validado input:invalid,
+form.validado select:invalid,
+form.validado textarea:invalid {
+    border-color: var(--cor-vermelho);
+    color: var(--cor-vermelho);
+}
+
+ul.erros {
+    border: 1px solid var(--cor-vermelho);
+    background: var(--cor-vermelho-claro);
+    color: var(--cor-vermelho);
+    display: none;
+    list-style: none;
+    margin: 0 auto;
+    padding: 5px 8px;
+    width: 350px;
+}
+
+ul.erros.mostrar {
+    display: block;
+}
+
+.acoes {
+    text-align: center;
+    margin: 5px 0;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    width: initial;
+}
