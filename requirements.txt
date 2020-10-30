@@ -1,0 +1,12 @@
+click==7.1.2
+flake8==3.8.4
+Flask==1.1.2
+importlib-metadata==2.0.0
+itsdangerous==1.1.0
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+mccabe==0.6.1
+pycodestyle==2.6.0
+pyflakes==2.2.0
+Werkzeug==1.0.1
+zipp==3.4.0
