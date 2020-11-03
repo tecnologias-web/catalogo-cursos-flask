@@ -66,3 +66,7 @@ table.crud th {
     background-color: #4CAF50;
     color: var(--cor-branca);
 }
+
+form.remover {
+    display: inline;
+}

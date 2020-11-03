@@ -1,0 +1,66 @@
+{% extends 'admin/modelo.html' %}
+
+{% block titulo %} {{titulo}} {% endblock %}
+
+{% block estilos %}
+    {{ super() }}
+    <link rel="stylesheet" href="/static/css/forms.css" />
+{% endblock %}
+
+{% block scripts %}
+    <script src="/static/scripts/forms.js" defer></script>
+{% endblock %}
+
+{% block admin %}
+    <h1>{{titulo}}</h1>
+    <form method="POST" novalidate>
+        <ul class="erros" {% if erros|length > 0 %}style="display: block;"{% endif %} >
+            {% for erro in erros %}
+                <li>{{ erro }}</li>
+            {% endfor %}
+        </ul>
+        <div>
+            <label for="curso-nome">Nome</label>
+            <input type="text" id="curso-nome" name="nome" value="{{curso.nome}}" required autofocus/>
+        </div>
+        <div>
+            <label for="curso-sigla">Sigla</label>
+            <input type="text" id="curso-sigla" name="sigla" value="{{curso.sigla}}" required />
+        </div>
+        <div>
+            <label for="curso-coordenador">Coordenador</label>
+            <input type="text" id="curso-coordenador" name="coordenador" value="{{curso.coordenador}}" />
+        </div>
+        <div>
+            <label for="curso-duracao">Duração</label>
+            <input type="number" id="curso-duracao" name="duracao" value="{{curso.duracao}}" />
+        </div>
+        <div>
+            <label for="curso-tipo">Tipo</label>
+            <select name="tipo" id="curso-tipo" required>
+                <option value="">Selecione uma opção</option>
+                <option value="Tecnólogo" {% if curso.tipo == 'Tecnólogo' %}selected{% endif %}>Tecnólogo</option>
+                <option value="Bacharelado" {% if curso.tipo == 'Bacharelado' %}selected{% endif %}>Bacharelado</option>
+            </select>
+        </div>
+        <div>
+            <label for="curso-descricao">Descrição</label>
+            <textarea name="descricao" id="curso-descricao">{{curso.descricao}}</textarea>
+        </div>
+        <fieldset>
+            <legend>Períodos</legend>
+            <label for="curso-periodo-diurno">Diurno</label>
+            <input type="checkbox" name="diurno" id="curso-periodo-diurno" value="S" {% if curso.diurno %}checked{% endif %} />
+            <label for="curso-periodo-noturno">Noturno</label>
+            <input type="checkbox" name="noturno" id="curso-periodo-noturno" value="S" {% if curso.noturno %}checked{% endif %}/>
+        </fieldset>
+        <div class="acoes">
+            <button type="submit" class="botao enviar">
+                Salvar
+            </button>
+            <button type="reset" class="botao limpar">
+                Limpar
+            </button>
+        </div>
+    </form>
+{% endblock %}

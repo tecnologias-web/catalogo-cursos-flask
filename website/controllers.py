@@ -60,8 +60,3 @@ def cursos(sigla):
         curso=objeto,
         disciplinas=disciplinas
     )
-
-
-@website_bp.context_processor
-def listar_cursos():
-    return dict(cursos_menu=Curso.listar())

@@ -2,6 +2,10 @@
 
 {% block titulo %} Controle de Cursos {% endblock %}
 
+{% block scripts %}
+    <script src="/static/scripts/admin.js" defer></script>
+{% endblock %}
+
 {% block admin %}
     <h2>Controle de Cursos</h2>
     <div class="botoes">
@@ -26,12 +30,14 @@
                 <td>{{curso.tipo}}</td>
                 <td>{{curso.duracao}}</td>
                 <td>
-                    <a href="/admin/cursos/alterar" class="botao">
+                    <a href="/admin/cursos/alterar/{{curso.sigla}}" class="botao">
                         Alterar
                     </a>
-                    <a href="/admin/cursos/remover" class="botao limpar">
-                        Remover
-                    </a>
+                    <form method="POST" class="remover" action="/admin/cursos/remover/{{curso.sigla}}">
+                        <button type="submit" class="botao limpar">
+                            Remover
+                        </button>
+                    </form>
                 </td>
             </tr>
         {% endfor %}
