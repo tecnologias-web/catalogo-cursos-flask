@@ -150,6 +150,12 @@ class Usuario(object):
         return self.nome
 
     @classmethod
+    def autenticar(cls, usuario, senha):
+        usuario = Usuario.obter(usuario)
+        if usuario and usuario.senha == senha:
+            return usuario
+
+    @classmethod
     def criar(cls, usuario, nome, email, senha):
         Usuario.__dados.append(
             cls(usuario, nome, email, senha)
