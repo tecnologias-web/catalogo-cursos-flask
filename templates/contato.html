@@ -1,0 +1,61 @@
+{% extends 'modelo.html' %}
+
+{% block titulo %} Contato {% endblock %}
+
+{% block estilos %}
+    <link rel="stylesheet" href="/static/css/forms.css" />
+{% endblock %}
+
+{% block scripts %}
+    <script src="/static/scripts/forms.js" defer></script>
+{% endblock %}
+
+{% block conteudo %}
+    <h1>Entre em contato conosco!</h1>
+    <form method="POST" novalidate>
+        <ul class="erros"></ul>
+        <div>
+            <label for="contato-nome">Nome</label>
+            <input type="text" 
+                id="contato-nome" 
+                name="nome"
+                required
+                maxlength="30"
+                autofocus/>
+        </div>
+        <div>
+            <label for="contato-email">E-Mail</label>
+            <input type="email" id="contato-email" name="email" required />
+        </div>
+        <div>
+            <label for="contato-assunto">Assunto</label>
+            <select name="assunto" id="contato-assunto" required>
+                <option value="">Selecione uma opção</option>
+                <option value="B">Bug</option>
+                <option value="R">Reclamação</option>
+                <option value="S">Sugestão</option>
+            </select>
+        </div>
+        <div>
+            <label for="contato-mensagem">Mensagem</label>
+            <textarea name="mensagem" id="contato-mensagem" required maxlength="120"></textarea>
+        </div>
+        <fieldset>
+            <legend>Como você conheceu a Impacta?</legend>
+            <label for="contato-conheceu-google">Google Ads</label>
+            <input type="radio" name="conheceu" id="contato-conheceu-google" value="GOOGLE" />
+            <label for="contato-conheceu-podcasts">Podcasts</label>
+            <input type="radio" name="conheceu" id="contato-conheceu-podcasts" value="PODCASTS" />
+            <label for="contato-conheceu-tv">TV</label>
+            <input type="radio" name="conheceu" id="contato-conheceu-tv" value="TV" />
+        </fieldset>
+        <div class="acoes">
+            <button type="submit" class="botao enviar">
+                Enviar Mensagem
+            </button>
+            <button type="reset" class="botao limpar">
+                Limpar Formulário
+            </button>
+        </div>
+    </form>
+{% endblock %}

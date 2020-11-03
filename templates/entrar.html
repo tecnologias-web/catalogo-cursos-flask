@@ -1,0 +1,35 @@
+{% extends 'modelo.html' %}
+
+{% block titulo %} Entrar {% endblock %}
+
+{% block estilos %}
+    <link rel="stylesheet" href="/static/css/forms.css" />
+{% endblock %}
+
+{% block scripts %}
+    <script src="/static/scripts/forms.js" defer></script>
+{% endblock %}
+
+{% block conteudo %}
+    <h1>Faça o seu login</h1>
+    <form method="POST" novalidate>
+        <ul class="erros"></ul>
+        <div>
+            <label for="login-usuario">Usuário</label>
+            <input type="text" id="login-usuario" name="usuario" required />
+        </div>
+        <div>
+            <label for="login-senha">Senha</label>
+            <input type="password" id="login-senha" name="senha" required />
+        </div>
+        <div>
+            <label for="login-lembrar">Lembrar de mim</label>
+            <input type="checkbox" id="login-lembrar" name="lembrar" value="SIM" />
+        </div>
+        <div class="acoes">
+            <button type="submit" class="botao enviar">
+                Fazer Login
+            </button>
+        </div>
+    </form>
+{% endblock %}

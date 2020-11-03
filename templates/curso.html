@@ -1,0 +1,94 @@
+{% extends 'modelo.html' %}
+
+{% block titulo %} {{curso.nome}} {% endblock %}
+
+{% block estilos %}
+    <link rel="stylesheet" href="/static/css/cursos.css" />
+{% endblock %}
+
+{% block scripts %}
+    <script src="/static/scripts/cursos.js" defer></script>
+{% endblock %}
+
+{% block conteudo %}
+    <h1>{{curso.nome}}</h1>
+    <section class="sobre-curso">
+        <h2>Sobre o Curso</h2>
+        {{curso.descricao|safe}}
+    </section>
+    <section>
+        <h2>Informações</h2>
+        <p>
+            <strong>Tipo de Curso</strong>: {{curso.tipo}}
+        </p>
+        <p>
+            <strong>Coordenador</strong>: {{curso.coordenador}}
+        </p>
+        <section>
+            <h3>Período</h3>
+            <ol>
+                {% if curso.diurno %}
+                    <li><strong>Matutino</strong> | 08h00 às 11h40 |</li>
+                {% endif %}
+                {% if curso.noturno %}
+                    <li><strong>Noturno</strong> | 19h00 às 22h40 |</li>
+                {% endif %}
+            </ol>
+            <p>
+                Duração: <em>{{curso.duracao}} semestres</em>
+            </p>
+        </section>
+        <section>
+            <h3>Investimento</h3>
+            <table class="investimento">
+                <thead>
+                    <tr>
+                        <th>Período</th>
+                        <th>Investimento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if curso.noturno %}
+                        <tr>
+                            <td>Matutino</td>
+                            <td>
+                                De: <del>R$ 744,96</del> Por: <ins>R$707,71</ins>
+                            </td>
+                        </tr>
+                    {% endif %}
+                    {% if curso.noturno %}
+                        <tr>
+                            <td>Noturno</td>
+                            <td>
+                                De: <del>R$ 840,96</del> Por: <ins>R$798,91</ins>
+                            </td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </section>
+    </section>
+    <section>
+        <h2>Matriz Curricular</h2>
+        <ul class="matriz-curricular">
+            {% for s in range(1,curso.duracao+1) %}
+                <li>{{s}}º Semestre
+                    <ul>
+                        {% for d in disciplinas %}
+                            {% if d.semestre == s %}
+                                <li>
+                                    {{d.nome}}: 
+                                    {% if d.carga_ead %} 
+                                        {{d.carga_ead}} horas (EAD) + {{d.carga_presencial}} horas (Presencial)
+                                    {% else %}
+                                        {{d.carga_presencial}} horas
+                                    {% endif %}
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Faculdade Impacta | {% block titulo %}{% endblock %}</title>
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/css/site.css" />
+    {% block estilos %}{% endblock %}
+    <script src="/static/scripts/menu.js" defer></script>
+    {% block scripts %}{% endblock %}
+</head>
+<body>
+    <header class="cabecalho">
+        <nav class="navegacao">
+            <a href="/">
+                <img alt="logo da faculdade Impacta" class="logo" src="/static/imagens/impacta-logo.png" />
+            </a>
+            <a class="item-menu" href="/sobre">Sobre a Faculdade</a>
+            <a class="item-menu" href="/contato">Contato</a>
+            <div class="dropdown">
+                <button class="dropdown-button">
+                    Cursos
+                    <span class="dropdown-icon"></span>
+                </button>
+                <div class="dropdown-menu">
+                    {% for curso in cursos_menu %}
+                        <a class="item-menu" href="/cursos/{{curso.sigla|lower}}">
+                            {{curso.nome}}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+            <a class="botao acesso" href="/entrar">Entrar</a>
+            <a class="menu-icone" href="#"></a>
+        </nav>
+    </header>
+    <main>
+        {% block conteudo %}{% endblock %}
+    </main>
+    <footer class="rodape">
+        <ul class="media-list">
+            <li>
+                <a class="media-link facebook" href="https://www.facebook.com/FacImpacta/" target="blank">Facebook</a>
+            </li>
+            <li>
+                <a class="media-link instagram" href="https://www.instagram.com/faculdadeimpacta/" target="blank">Instagram</a>
+            </li>
+            <li>
+                <a class="media-link linkedin" href="https://www.linkedin.com/edu/faculdade-impacta-tecnologia-161006/" target="blank">Linkedin</a>
+            </li>
+            <li>
+                <a class="media-link twitter" href="https://twitter.com/facimpacta/" target="blank">Twitter</a>
+            </li>
+            <li>
+                <a class="media-link youtube" href="https://www.youtube.com/user/GrupoImpacta/" target="blank">Youtube</a>
+            </li>
+        </ul>
+        <p>2020 Faculdade Impacta 11 3254-8300 Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
