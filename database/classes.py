@@ -134,3 +134,29 @@ class Premio(object):
     @classmethod
     def listar(cls):
         return Premio.__dados
+
+
+class Usuario(object):
+
+    __dados = []
+
+    def __init__(self, usuario, nome, email, senha):
+        self.usuario = usuario
+        self.nome = nome
+        self.email = email
+        self.senha = senha
+
+    def __str__(self):
+        return self.nome
+
+    @classmethod
+    def criar(cls, usuario, nome, email, senha):
+        Usuario.__dados.append(
+            cls(usuario, nome, email, senha)
+        )
+
+    @classmethod
+    def obter(cls, usuario):
+        for u in Usuario.__dados:
+            if u.usuario == usuario:
+                return u

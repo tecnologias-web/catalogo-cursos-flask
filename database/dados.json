@@ -852,5 +852,19 @@
             "descricao": "<p>Nota 4 na avaliação do ENADE/MEC - 3.º melhor curso da cidade de São Paulo.</p>",
             "curso": "SI"
         }
+    ],
+    "usuarios":[
+        {
+            "nome": "Administrador",
+            "email": "admin@fit.com.br",
+            "usuario": "admin",
+            "senha": "admin123"
+        },
+        {
+            "nome": "Usuário Comum",
+            "email": "usuario@fit.com.br",
+            "usuario": "usuario",
+            "senha": "usuario123"
+        }
     ]
 }

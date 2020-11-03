@@ -1,7 +1,7 @@
 import json
 import os
 
-from database.classes import Curso, Disciplina, Premio
+from database.classes import Curso, Disciplina, Premio, Usuario
 
 
 def carregar_dados(base_dir):
@@ -10,6 +10,7 @@ def carregar_dados(base_dir):
         carregar_cursos(dados['cursos'])
         carregar_disciplinas(dados['disciplinas'])
         carregar_premios(dados['premios'])
+        carregar_usuarios(dados['usuarios'])
 
 
 def carregar_cursos(cursos):
@@ -47,6 +48,17 @@ def carregar_premios(premios):
             Curso.obter(premio['curso'])
         )
     print(f'Carregados {len(premios)} prêmios com sucesso!')
+
+
+def carregar_usuarios(usuarios):
+    for usuario in usuarios:
+        Usuario.criar(
+            usuario['usuario'],
+            usuario['nome'],
+            usuario['email'],
+            usuario['senha']
+        )
+    print(f'Carregados {len(usuarios)} usuários com sucesso!')
 
 
 if __name__ == "__main__":
