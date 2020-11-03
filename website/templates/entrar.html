@@ -13,7 +13,11 @@
 {% block conteudo %}
     <h1>Faça o seu login</h1>
     <form method="POST" novalidate>
-        <ul class="erros"></ul>
+        <ul class="erros" {% if erros | length > 0 %}style="display: block;"{% endif %}>
+            {% for erro in erros %}
+                <li>{{ erro }}</li>
+            {% endfor %}
+        </ul>
         <div>
             <label for="login-usuario">Usuário</label>
             <input type="text" id="login-usuario" name="usuario" required />
