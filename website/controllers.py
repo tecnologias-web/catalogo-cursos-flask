@@ -1,5 +1,5 @@
 from database.classes import Curso, Disciplina, Premio
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 
 
 website_bp = Blueprint(
@@ -31,8 +31,21 @@ def entrar():
     )
 
 
-@website_bp.route('/contato')
+@website_bp.route('/contato', methods=['GET', 'POST'])
 def contato():
+
+    if request.method == 'POST':
+        form = request.form
+        print(f'''
+        ++++ MENSAGEM ENVIADA ++++
+        -> Nome: {form.get('nome')}
+        -> E-mail: {form.get('email')}
+        -> Assunto: {form.get('assunto')}
+        -> Como Conheceu: {form.get('conheceu')}
+        -> Mensagem:
+        {form.get('mensagem')}
+        ''')
+
     return render_template(
         'contato.html'
     )

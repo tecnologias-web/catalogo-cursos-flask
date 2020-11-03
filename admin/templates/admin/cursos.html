@@ -1,0 +1,39 @@
+{% extends 'admin/modelo.html' %}
+
+{% block titulo %} Controle de Cursos {% endblock %}
+
+{% block admin %}
+    <h2>Controle de Cursos</h2>
+    <div class="botoes">
+        <a href="/admin/cursos/criar" class="botao enviar incluir">
+            Novo Curso
+        </a>
+    </div>
+    <table class="crud">
+        <tr>
+            <th>Nome</th>
+            <th>Sigla</th>
+            <th>Coordenador</th>
+            <th>Tipo</th>
+            <th>Duração</th>
+            <th>Ações</th>
+        </tr>
+        {% for curso in cursos %}
+            <tr>
+                <td>{{curso.nome}}</td>
+                <td>{{curso.sigla}}</td>
+                <td>{{curso.coordenador}}</td>
+                <td>{{curso.tipo}}</td>
+                <td>{{curso.duracao}}</td>
+                <td>
+                    <a href="/admin/cursos/alterar" class="botao">
+                        Alterar
+                    </a>
+                    <a href="/admin/cursos/remover" class="botao limpar">
+                        Remover
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
