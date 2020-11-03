@@ -24,8 +24,12 @@ def sobre():
     )
 
 
-@website_bp.route('/entrar')
+@website_bp.route('/entrar', methods=['GET', 'POST'])
 def entrar():
+
+    if request.method == 'POST':
+        form = request.form
+
     return render_template(
         'entrar.html'
     )
