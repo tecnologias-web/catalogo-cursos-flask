@@ -31,7 +31,7 @@ def carregar_disciplinas(disciplinas):
     for disciplina in disciplinas:
         Disciplina.criar(
             disciplina['nome'],
-            disciplina['curso'],
+            Curso.obter(disciplina['curso']),
             disciplina['semestre'],
             disciplina['presencial'],
             disciplina['ead']
@@ -44,7 +44,7 @@ def carregar_premios(premios):
         Premio.criar(
             premio['titulo'],
             premio['descricao'],
-            premio['curso']
+            Curso.obter(premio['curso'])
         )
     print(f'Carregados {len(premios)} prêmios com sucesso!')
 

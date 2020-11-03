@@ -24,6 +24,16 @@ class Curso(object):
                 duracao, diurno, noturno)
         )
 
+    @classmethod
+    def obter(cls, sigla):
+        for c in Curso.__dados:
+            if c.sigla.lower() == sigla.lower():
+                return c
+
+    @classmethod
+    def listar(cls):
+        return Curso.__dados
+
 
 class Disciplina(object):
 
@@ -45,6 +55,17 @@ class Disciplina(object):
             cls(nome, curso, semestre, carga_presencial, carga_ead)
         )
 
+    @classmethod
+    def filtrar(cls, curso_sigla):
+        return [d
+                for d in Disciplina.__dados
+                if d.curso.sigla.lower() == curso_sigla.lower()
+                ]
+
+    @classmethod
+    def listar(cls):
+        return Disciplina.__dados
+
 
 class Premio(object):
 
@@ -63,3 +84,7 @@ class Premio(object):
         Premio.__dados.append(
             cls(titulo, descricao, curso)
         )
+
+    @classmethod
+    def listar(cls):
+        return Premio.__dados
