@@ -12,12 +12,16 @@
 
 {% block conteudo %}
     <h1>Faça o seu login</h1>
-    <form method="POST" novalidate>
-        <ul class="erros" {% if erros | length > 0 %}style="display: block;"{% endif %}>
-            {% for erro in erros %}
-                <li>{{ erro }}</li>
-            {% endfor %}
-        </ul>
+    <form method="POST" novalidate action="/autenticar">
+        {% with mensagens = get_flashed_messages() %}
+            {% if mensagens %}
+                <ul class="erros" style="display: block;">
+                    {% for msg in mensagens %}
+                        <li>{{ msg }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
         <div>
             <label for="login-usuario">Usuário</label>
             <input type="text" id="login-usuario" name="usuario" required />
