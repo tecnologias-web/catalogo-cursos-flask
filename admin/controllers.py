@@ -1,4 +1,4 @@
-from flask import Blueprint, flash, redirect, request, render_template, session
+from flask import Blueprint, jsonify, redirect, request, render_template
 from database.classes import Curso
 from admin.decorators import login_required
 
@@ -88,3 +88,16 @@ def cursos_alterar(sigla):
 def cursos_remover(sigla):
     Curso.remover(sigla)
     return redirect('/admin/cursos')
+
+
+@admin_bp.route('/cursos/verificar/<sigla>')
+@login_required
+def cursos_verificar(sigla):
+    curso = Curso.obter(sigla)
+    resultado = {}
+    if not curso:
+        resultado['existe'] = False
+    else:
+        resultado['existe'] = True
+        resultado['mensagem'] = f'Sigla {sigla} já em uso'
+    return jsonify(resultado)
