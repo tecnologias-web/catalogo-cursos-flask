@@ -1,5 +1,7 @@
 from flask import Blueprint, flash, redirect, request, render_template, session
 from database.classes import Curso
+from admin.decorators import login_required
+
 
 admin_bp = Blueprint(
     'admin',
@@ -9,18 +11,14 @@ admin_bp = Blueprint(
 
 
 @admin_bp.route('/')
+@login_required
 def home():
-    if 'usuario' not in session:
-        flash('Usuário não logado!')
-        return redirect('/entrar')
     return render_template('admin/home.html')
 
 
 @admin_bp.route('/cursos')
+@login_required
 def cursos():
-    if 'usuario' not in session:
-        flash('Usuário não logado!')
-        return redirect('/entrar')
     return render_template(
         'admin/cursos.html',
         cursos=Curso.listar()
@@ -28,10 +26,8 @@ def cursos():
 
 
 @admin_bp.route('/cursos/criar', methods=['GET', 'POST'])
+@login_required
 def cursos_criar():
-    if 'usuario' not in session:
-        flash('Usuário não logado!')
-        return redirect('/entrar')
     curso = {}
     erros = []
     if request.method == 'POST':
@@ -59,10 +55,8 @@ def cursos_criar():
 
 
 @admin_bp.route('/cursos/alterar/<sigla>', methods=['GET', 'POST'])
+@login_required
 def cursos_alterar(sigla):
-    if 'usuario' not in session:
-        flash('Usuário não logado!')
-        return redirect('/entrar')
     curso = Curso.obter(sigla)
     erros = []
     if request.method == 'POST':
@@ -90,9 +84,7 @@ def cursos_alterar(sigla):
 
 
 @admin_bp.route('/cursos/remover/<sigla>', methods=['POST'])
+@login_required
 def cursos_remover(sigla):
-    if 'usuario' not in session:
-        flash('Usuário não logado!')
-        return redirect('/entrar')
     Curso.remover(sigla)
     return redirect('/admin/cursos')

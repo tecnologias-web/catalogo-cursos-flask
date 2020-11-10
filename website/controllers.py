@@ -48,7 +48,6 @@ def autenticar():
         return redirect('/entrar')
 
 
-
 @website_bp.route('/sair')
 def sair():
     session.clear()
